@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: Lato-Bold;
+  src: url(./assets/Lato/Lato-Bold.ttf);
+}
+@font-face {
+  font-family: Lato-Light;
+  src: url(./assets/Lato/Lato-Light.ttf);
+}
+@font-face {
+  font-family: Lato-Regular;
+  src: url(./assets/Lato/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: Lato-Thin;
+  src: url(./assets/Lato/Lato-Thin.ttf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  background-image: url("./assets/aurora.jpg");
+  height: 100vh;
+  font-family: 'Lato-Regular', sans-serif;
+  display: grid;
+  place-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.weather{
+  background-image: linear-gradient(127.56deg, rgba(255, 255, 255, 0.136) 2.35%, rgba(255, 255, 255, 0.0289) 83.4%);
+  padding: 4.5em;
+  border-radius: 34px;
+  margin: 3em;
+  width: clamp(23ch,auto,46ch);
+  animation: anim 1.5s cubic-bezier(0.16, 1, 0.3, 1)  1 alternate;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes anim{
+  0%{
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather .upper-items{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.weather .upper-items div{
+  display: flex;
+  flex-direction: column;
+}
+
+.location{
+  font-family: 'Lato-Light', sans-serif;
+  font-weight: 50;
+  font-size: 70px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.description{
+  font-family: 'Lato-Bold', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.weather .lower-items{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+}
+
+.weather .lower-items .main-temp{
+  display: flex;
+  flex-direction: column;
+}
+
+.main-temp .temp-title{
+  font-family: 'Lato-Light', sans-serif;
+  text-transform: uppercase;
+  font-weight: lighter;
+  font-size: 20px;
+  letter-spacing: .25em;
+  text-align: center;
+}
+
+.main-temp .temp{
+  font-family: 'Lato-Light', sans-serif;
+  font-size: 50px;
+}
+
+.weather .lower-items .details{
+  font-family: 'Lato-Light', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.weather .lower-items .detailed-information{
+  display: flex;
+  justify-content: space-around;
+}
+
+.left-items , .right-items{
+  display: flex;
+  flex-direction: column;
+}
+
+.left-items{
+  order: 1;
+  text-transform: uppercase;
+  padding-right: .25em;
+}
+
+.right-items{
+  order: 2;
+  font-family: 'Lato-Regular', sans-serif;
+  font-weight: 500;
+}
+.details h3{
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+}
+
+.details , .detailed-information{
+  padding: .2em;
 }
