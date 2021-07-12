@@ -1,6 +1,7 @@
 
 import './App.css';
 import React,{useEffect,useState} from 'react';
+import API_ID from './ApiID';//this file is not included in this repo
 
 
 function App() {
@@ -10,11 +11,11 @@ function App() {
 
   if(!mounted){
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=jakarta&units=metric&appid=a5160f5152f4289316a1e776420ba585`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=jakarta&units=metric&appid=${API_ID}`)
         .then( res => res.json() )
         .then( resJson => {
           if(resJson.cod === '404'){
-            throw new Error(`<div>something went wrong</div>`);
+            throw new Error(`<div>Please wait...</div>`);
           }
           else{
             setWeatherData(()=>resJson)
@@ -31,22 +32,7 @@ function App() {
   },[])
 
   useEffect(()=>{
-    // navigator.geolocation.getCurrentPosition( pos => {
-    //   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${pos.latitude}&lon=${pos.longitude}&units=metric&appid=a5160f5152f4289316a1e776420ba585`)
-    //     .then( res => res.json() )
-    //     .then( resJson => {
-    //       if(resJson.cod === '404'){
-    //         throw new Error(`<div>something went wrong</div>`);
-    //       }
-    //       else{
-    //         setWeatherData(()=>resJson)
-    //         console.log(resJson);
-    //       }
-    //     })
-    //     .then(()=>console.log('components will be mounted'))
-    //     .catch((e)=> setWeatherData(()=>e))
-    // });
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=jakarta&units=metric&appid=a5160f5152f4289316a1e776420ba585`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=jakarta&units=metric&appid=${API_ID}`)
         .then( res => res.json() )
         .then( resJson => {
           if(resJson.cod === '404'){
@@ -109,23 +95,6 @@ const Weather = ({weatherData,setClicked}) => {
             </div>
           </div>
         </div>
-        {/* <div className="weather">
-          <div className="location-time">
-            
-            <div className="details">
-              <span className="temp">{`${weatherData.main.temp} C`}</span>
-              <div className="icon"></div>
-              <div className="description">{weatherData.weather[0].main}</div>
-            </div>
-            <span id="location">{weatherData.name}</span>
-
-          </div>
-          <div className="weather-details"> 
-            <div className="low-max">{`max : ${weatherData.main.temp_max} min : ${weatherData.main.temp_min}`}</div>
-            <div className="feels-like">{`feels like : ${weatherData.main.feels_like}`}</div>
-            <button onClick={()=>setClicked((prevState)=>!prevState)}>REFRESH</button>
-          </div> 
-        </div> */}
       </React.Fragment>
     )
   }
